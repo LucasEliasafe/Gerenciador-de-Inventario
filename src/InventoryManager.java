@@ -31,6 +31,10 @@ public class InventoryManager {
         }
     }
 
+    public void deleteProduct(String name) {
+        products.removeIf(product -> product.getName().equals(name));
+    }
 
+    public
 
 }
