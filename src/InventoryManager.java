@@ -9,4 +9,8 @@ public class InventoryManager {
     public InventoryManager() {
         this.products = new ArrayList<>();
     }
+
+    public void addProduct(Product product) {
+        products.add(product);
+    }
 }
