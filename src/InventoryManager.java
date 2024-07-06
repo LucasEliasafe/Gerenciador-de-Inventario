@@ -20,5 +20,17 @@ public class InventoryManager {
         }
     }
 
+    public void updateProduct(String name, Product newProduct) {
+        for (Product product : products) {
+            if (product.getName().equals(name)) {
+                product.setName(newProduct.getName());
+                product.setQuantity(newProduct.getQuantity());
+                product.setPrice(newProduct.getPrice());
+                break;
+            }
+        }
+    }
+
+
 
 }
