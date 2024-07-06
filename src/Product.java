@@ -16,6 +16,10 @@ public class Product {
 
     @return
 
-    public
+    public String getName() {
+            return name;
+    }
+
+
 
 }
