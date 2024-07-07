@@ -20,6 +20,32 @@ public class Main {
             int option = scanner.nextInt();
             scanner.nextLine();
 
+            switch (option) {
+                case 1:
+                    System.out.println("Nome do produto: ");
+                    String name = scanner.nextLine();
+                    System.out.println("Quantidade: ");
+                    int quantity = scanner.nextInt();
+                    System.out.println("Preço: ");
+                    double price = scanner.nextDouble();
+                    scanner.nextLine();
+
+                    manager.addProduct(new Product(name, quantity, price));
+                    System.out.println("Produto adicionado com sucesso!");
+                    break;
+
+                case 2:
+                    System.out.println("Produtos no Inventário:");
+                    manager.listProducts();
+                    break;
+
+                case 3:
+                    System.out.println("Nome do produto a ser atualizado: ");
+                    String oldName = scanner.nextLine();
+                    System.out.println("Novo nome do produto: ");
+
+            }
+
 
         }
 
