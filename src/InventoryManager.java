@@ -10,6 +10,7 @@ public class InventoryManager {
         this.products = new ArrayList<>();
     }
 
+
     public void addProduct(Product product) {
         products.add(product);
     }
@@ -46,7 +47,23 @@ public class InventoryManager {
         }
     }
 
-    public void lo
+    public void loadFromFile(String filename) {
+        try (BufferedReader reader = new BufferedReader(new FileReader(filename))) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                String[] parts = line.split(",");
+                if (parts.length == 3) {
+                    String name = parts[0];
+                    int quantity = Integer.parseInt(parts[1]);
+                    double price = Double.parseDouble(parts[2]);
+                    products.add(new Product(name, quantity, price));
+                }
+            }
+        } catch (IOException e) {
+            System.err.println("Erro ao carregar produtos do arquivo: " + e.getMessage());
+        }
+    }
+
 
 
 }
