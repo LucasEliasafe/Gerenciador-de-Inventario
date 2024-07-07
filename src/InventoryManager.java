@@ -35,6 +35,18 @@ public class InventoryManager {
         products.removeIf(product -> product.getName().equals(name));
     }
 
-    public
+    public void saveToFile(String filename) {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(filename))) {
+            for (Product product : products) {
+                writer.write(product.getName() + "," + product.getQuantity() + "," + product.getPrice());
+                writer.newLine();
+            }
+        } catch (IOException e) {
+            System.err.println("Erro ao salvar produtos no arquivo: " + e.getMessage());
+        }
+    }
+
+    public void lo
+
 
 }
