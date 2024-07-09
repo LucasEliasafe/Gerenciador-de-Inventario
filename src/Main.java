@@ -43,12 +43,35 @@ public class Main {
                     System.out.println("Nome do produto a ser atualizado: ");
                     String oldName = scanner.nextLine();
                     System.out.println("Novo nome do produto: ");
+                    String newName = scanner.nextLine();
+                    System.out.println("Nova quantidade: ");
+                    int newQuantity = scanner.nextInt();
+                    System.out.println("Novo preço: ");
+                    double newPrice = scanner.nextDouble();
+                    scanner.nextLine();
+
+                    manager.updateProduct(oldName, new Product(newName, newQuantity, newPrice));
+                    System.out.println("Produto atualizado com sucesso!");
+                    break;
+
+                case 4:
+                    System.out.println("Nome do produto a ser excluido: ");
+                    String deleteName = scanner.nextLine();
+                    manager.deleteProduct(deleteName);
+                    System.out.println("Produto excluído.");
+                    break;
+
+                case 5:
+                    manager.saveToFile(filename);
+                    System.out.println("Produtos salvos no arquivo. Saindo. . .");
+                    scanner.close();
+                    return;
+
+                default:
+                    System.out.println("Opção inválida. Tente novamente.");
+                    break;
 
             }
-
-
         }
-
-
     }
 }
