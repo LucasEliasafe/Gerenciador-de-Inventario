@@ -7,6 +7,15 @@ public class InventoryManager {
     private List<Product> products;
     private List<Sale> sales;
 
+    public InventoryManager(){
+        this.products = new ArrayList<>();
+        this.sales = new ArrayList<>();
+    }
+
+    public void registerSale(String productName, int quantitySold) {
+        Product product =
+    }
+
 
     public InventoryManager() {
         this.products = new ArrayList<>();
