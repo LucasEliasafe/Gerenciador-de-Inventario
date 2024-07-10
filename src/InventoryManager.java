@@ -13,13 +13,25 @@ public class InventoryManager {
     }
 
     public void registerSale(String productName, int quantitySold) {
-        Product product =
+        Product product = findProductByName(productName);
+        if (product != null && product.getQuantity() >= quantitySold) {
+            product.setQuantity(product.getQuantity() - quantitySold);
+
+            Sale sale = new Sale(product, quantitySold, LocalDate.now());
+            sales.add(sale);
+
+            System.out.println("Venda registrada com sucesso.");
+        } else {
+            System.out.println("Produto não encontrado ou estoque insuficiente para realizar a venda.");
+        }
     }
 
+    private
 
-    public InventoryManager() {
-        this.products = new ArrayList<>();
-    }
+
+
+
+
 
     public void addProduct(Product product) {
         products.add(product);
@@ -59,11 +71,7 @@ public class InventoryManager {
         }
     }
 
-    /**
-     * Carrega os produtos de um arquivo de texto para o inventário.
-     *
-     * @param filename Nome do arquivo de onde os produtos serão carregados
-     */
+
     public void loadFromFile(String filename) {
         File file = new File(filename);
         if (!file.exists()) {
