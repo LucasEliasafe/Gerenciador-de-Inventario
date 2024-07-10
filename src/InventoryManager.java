@@ -7,7 +7,7 @@ public class InventoryManager {
     private List<Product> products;
     private List<Sale> sales;
 
-    public InventoryManager(){
+    public InventoryManager() {
         this.products = new ArrayList<>();
         this.sales = new ArrayList<>();
     }
@@ -26,7 +26,15 @@ public class InventoryManager {
         }
     }
 
-    private
+    private Product findProductByName(String productName) {
+        for (Product product : products) {
+            if (product.getName().equalsIgnoreCase(name)) {
+                return product;
+            }
+        }
+        return null;
+    }
+
 
 
 
