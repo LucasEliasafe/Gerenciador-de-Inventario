@@ -6,57 +6,56 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         String filename = "products.txt";
 
-        manager.loadFromFile(filename);
 
         while (true) {
-            System.out.println("\n--- Menu Gerenciador ");
-            System.out.println("1. Adicionar Produto");
-            System.out.println("2. Listar Produtos");
-            System.out.println("3. Atualizar Produto");
-            System.out.println("4. Excluir Produto");
+            System.out.println("\n--- Menu de Gerenciamento de Inventário ---");
+            System.out.println("1. Adicionar produto");
+            System.out.println("2. Listar produtos");
+            System.out.println("3. Atualizar produto");
+            System.out.println("4. Excluir produto");
             System.out.println("5. Salvar");
             System.out.println("6. Sair");
-            System.out.println("Escolha uma opção: ");
+            System.out.print("Escolha uma opção: ");
 
             int option = scanner.nextInt();
             scanner.nextLine();
 
             switch (option) {
                 case 1:
-                    System.out.println("Nome do produto: ");
+                    System.out.print("Nome do produto: ");
                     String name = scanner.nextLine();
-                    System.out.println("Quantidade: ");
+                    System.out.print("Quantidade: ");
                     int quantity = scanner.nextInt();
-                    System.out.println("Preço unitário: ");
+                    System.out.print("Preço unitário: ");
                     double unitPrice = scanner.nextDouble();
-                    scanner.nextLine();
+                    scanner.nextLine(); // Consumir nova linha
 
                     manager.addProduct(new Product(name, quantity, unitPrice));
-                    System.out.println("Produto adicionado com sucesso!");
+                    System.out.println("Produto adicionado.");
                     break;
 
                 case 2:
-                    System.out.println("Produtos no Inventário:");
+                    System.out.println("Produtos no inventário:");
                     manager.listProducts();
                     break;
 
                 case 3:
-                    System.out.println("Nome do produto a ser atualizado: ");
+                    System.out.print("Nome do produto a ser atualizado: ");
                     String oldName = scanner.nextLine();
-                    System.out.println("Novo nome do produto: ");
+                    System.out.print("Novo nome do produto: ");
                     String newName = scanner.nextLine();
-                    System.out.println("Nova quantidade: ");
+                    System.out.print("Nova quantidade: ");
                     int newQuantity = scanner.nextInt();
-                    System.out.println("Novo preço: ");
+                    System.out.print("Novo preço unitário: ");
                     double newUnitPrice = scanner.nextDouble();
-                    scanner.nextLine();
+                    scanner.nextLine(); // Consumir nova linha
 
                     manager.updateProduct(oldName, new Product(newName, newQuantity, newUnitPrice));
-                    System.out.println("Produto atualizado com sucesso!");
+                    System.out.println("Produto atualizado.");
                     break;
 
                 case 4:
-                    System.out.println("Nome do produto a ser excluido: ");
+                    System.out.print("Nome do produto a ser excluído: ");
                     String deleteName = scanner.nextLine();
                     manager.deleteProduct(deleteName);
                     System.out.println("Produto excluído.");
@@ -72,10 +71,10 @@ public class Main {
                     scanner.close();
                     return;
 
+
                 default:
                     System.out.println("Opção inválida. Tente novamente.");
                     break;
-
             }
         }
     }
