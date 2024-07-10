@@ -14,7 +14,8 @@ public class Main {
             System.out.println("2. Listar Produtos");
             System.out.println("3. Atualizar Produto");
             System.out.println("4. Excluir Produto");
-            System.out.println("5. Salvar e Sair");
+            System.out.println("5. Salvar");
+            System.out.println("6. Sair");
             System.out.println("Escolha uma opção: ");
 
             int option = scanner.nextInt();
@@ -26,11 +27,11 @@ public class Main {
                     String name = scanner.nextLine();
                     System.out.println("Quantidade: ");
                     int quantity = scanner.nextInt();
-                    System.out.println("Preço: ");
-                    double price = scanner.nextDouble();
+                    System.out.println("Preço unitário: ");
+                    double unitPrice = scanner.nextDouble();
                     scanner.nextLine();
 
-                    manager.addProduct(new Product(name, quantity, price));
+                    manager.addProduct(new Product(name, quantity, unitPrice));
                     System.out.println("Produto adicionado com sucesso!");
                     break;
 
@@ -47,10 +48,10 @@ public class Main {
                     System.out.println("Nova quantidade: ");
                     int newQuantity = scanner.nextInt();
                     System.out.println("Novo preço: ");
-                    double newPrice = scanner.nextDouble();
+                    double newUnitPrice = scanner.nextDouble();
                     scanner.nextLine();
 
-                    manager.updateProduct(oldName, new Product(newName, newQuantity, newPrice));
+                    manager.updateProduct(oldName, new Product(newName, newQuantity, newUnitPrice));
                     System.out.println("Produto atualizado com sucesso!");
                     break;
 
@@ -63,7 +64,11 @@ public class Main {
 
                 case 5:
                     manager.saveToFile(filename);
-                    System.out.println("Produtos salvos no arquivo. Saindo. . .");
+                    System.out.println("Produtos salvos no arquivo.");
+                    break;
+
+                case 6:
+                    System.out.println("Saindo...");
                     scanner.close();
                     return;
 

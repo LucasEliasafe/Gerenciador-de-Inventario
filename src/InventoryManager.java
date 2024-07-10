@@ -26,7 +26,7 @@ public class InventoryManager {
             if (product.getName().equals(name)) {
                 product.setName(newProduct.getName());
                 product.setQuantity(newProduct.getQuantity());
-                product.setPrice(newProduct.getPrice());
+                product.setUnitPrice(newProduct.getUnitPrice());
                 break;
             }
         }
@@ -39,9 +39,10 @@ public class InventoryManager {
     public void saveToFile(String filename) {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(filename))) {
             for (Product product : products) {
-                writer.write(product.getName() + "," + product.getQuantity() + "," + product.getPrice());
+                writer.write(product.getName() + "," + product.getQuantity() + "," + product.getUnitPrice() + "," + product.getTotalPrice());
                 writer.newLine();
             }
+            System.out.println("Produtos salvos no arquivo com sucesso");
         } catch (IOException e) {
             System.err.println("Erro ao salvar produtos no arquivo: " + e.getMessage());
         }
@@ -52,18 +53,16 @@ public class InventoryManager {
             String line;
             while ((line = reader.readLine()) != null) {
                 String[] parts = line.split(",");
-                if (parts.length == 3) {
+                if (parts.length == 4) {
                     String name = parts[0];
                     int quantity = Integer.parseInt(parts[1]);
-                    double price = Double.parseDouble(parts[2]);
-                    products.add(new Product(name, quantity, price));
+                    double unitPrice = Double.parseDouble(parts[2]);
+                    products.add(new Product(name, quantity, unitPrice));
                 }
             }
+            System.out.println("Produtos carregados do arquivo com sucesso");
         } catch (IOException e) {
             System.err.println("Erro ao carregar produtos do arquivo: " + e.getMessage());
         }
     }
-
-
-
 }

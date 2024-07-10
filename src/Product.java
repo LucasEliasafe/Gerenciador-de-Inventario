@@ -1,13 +1,16 @@
 public class Product {
     private String name;
     private int quantity;
-    private double price;
+    private double unitPrice;
+    private double totalPrice;
 
 
     public Product(String name, int quantity, double price) {
         this.name = name;
         this.quantity = quantity;
-        this.price = price;
+        this.unitPrice = unitPrice;
+        this.totalPrice = calculateTotalPrice();
+
     }
 
 
@@ -28,16 +31,26 @@ public class Product {
 
     public void setQuantity(int quantity) {
         this.quantity = quantity;
+        this.totalPrice = calculateTotalPrice();
     }
 
 
-    public double getPrice() {
-        return price;
+    public double getUnitPrice() {
+        return unitPrice;
     }
 
 
-    public void setPrice(double price) {
-        this.price = price;
+    public void setUnitPrice(double unitPrice) {
+        this.unitPrice = unitPrice;
+        this.totalPrice = calculateTotalPrice();
+    }
+
+    public double getTotalPrice() {
+        return totalPrice;
+    }
+
+    private double calculateTotalPrice() {
+        return this.quantity * this.unitPrice;
     }
 
 
@@ -46,7 +59,8 @@ public class Product {
         return "Product{" +
                 "name='" + name + '\'' +
                 ", quantity=" + quantity +
-                ", price=" + price +
+                ", unitPrice=" + unitPrice +
+                ", totalPrice=" + totalPrice +
                 '}';
     }
 }

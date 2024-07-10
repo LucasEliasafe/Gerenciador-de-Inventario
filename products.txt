@@ -1,1 +1,3 @@
 Madeira,20,5.0
+Aço,5,5.0
+Teclado,5,2.0
