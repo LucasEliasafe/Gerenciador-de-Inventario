@@ -16,8 +16,11 @@ public class Main {
             System.out.println("3. Atualizar produto");
             System.out.println("4. Excluir produto");
             System.out.println("5. Salvar");
-            System.out.println("6. Sair");
+            System.out.println("6.Gerar relátorio de vendas");
+            System.out.println("7. Sair");
+
             System.out.print("Escolha uma opção: ");
+
 
             int option = scanner.nextInt();
             scanner.nextLine();
@@ -67,6 +70,8 @@ public class Main {
                     manager.saveToFile(filename);
                     System.out.println("Produtos salvos no arquivo.");
                     break;
+
+
 
                 case 6:
                     System.out.println("Saindo...");
