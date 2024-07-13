@@ -6,6 +6,8 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         String filename = "products.txt";
 
+        manager.loadFromFile(filename);
+
 
         while (true) {
             System.out.println("\n--- Menu de Gerenciamento de Inventário ---");

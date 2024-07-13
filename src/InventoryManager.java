@@ -1,6 +1,7 @@
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.time.LocalDate;
 
 
 public class InventoryManager {
@@ -17,7 +18,7 @@ public class InventoryManager {
         if (product != null && product.getQuantity() >= quantitySold) {
             product.setQuantity(product.getQuantity() - quantitySold);
 
-            Sale sale = new Sale(product, quantitySold, LocalDate.now());
+            Sale sale = new Sale(product, quantitySold,LocalDate.now());
             sales.add(sale);
 
             System.out.println("Venda registrada com sucesso.");
@@ -26,7 +27,7 @@ public class InventoryManager {
         }
     }
 
-    private Product findProductByName(String productName) {
+    private Product findProductByName(String name) {
         for (Product product : products) {
             if (product.getName().equalsIgnoreCase(name)) {
                 return product;
@@ -37,9 +38,19 @@ public class InventoryManager {
 
 
 
-
-
-
+    public void generateSalesReport() {
+        if (sales.isEmpty()) {
+            System.out.println("Nenhuma venda registrada.");
+        } else {
+            System.out.println("Relatório de vendas.");
+            for (Sale sale : sales) {
+                System.out.println("Data: " + sale.getDate());
+                System.out.println("Produto: " + sale.getProduct().getName());
+                System.out.println("Quantidade vendida: " + sale.getQuantitySold());
+                System.out.println("--------------------");
+            }
+        }
+    }
 
     public void addProduct(Product product) {
         products.add(product);
